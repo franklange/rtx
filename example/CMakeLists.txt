@@ -1,4 +1,4 @@
-project(rtx_example)
+project(rtx_client)
 
 add_executable(${PROJECT_NAME} main.cpp)
 

@@ -5,15 +5,6 @@
 
 namespace rtx {
 
-namespace {
-
-auto to_bytes(std::string a, std::string b) -> bln_net::bytes
-{
-    return bln_net::to_bytes(rtx::pack(std::move(a), std::move(b)));
-}
-
-} // namespace anonym
-
 client::client(socket& s, endpoint server)
     : m_socket{s}
     , m_server{std::move(server)}
