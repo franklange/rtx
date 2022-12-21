@@ -12,18 +12,18 @@ auto main(int argc, char** argv) -> int
     const std::string topic{"foo.bar"};
 
     bln_net::udp::socket_asio s{static_cast<std::uint16_t>(std::stoul(argv[1]))};
-    rtx::client client{s, {"127.0.0.1", 8000}};
+    rtx::client c{s, {"127.0.0.1", 8000}};
 
-    std::thread listener{[&](){
+    std::thread listener{[&c](){
         while (true)
-            rtx_log(client.wait());
+            rtx_log(c.wait());
     }};
 
-    std::thread cmdline{[&](){
+    std::thread cmdline{[&c](){
         std::string line;
 
         while (std::getline(std::cin, line))
-            client.send(line);
+            c.send(line);
     }};
 
     cmdline.join();

@@ -16,6 +16,11 @@ struct message
 auto pack(const std::string&, const std::string&) -> std::string;
 auto unpack(const std::string&) -> message;
 
+struct heartbeat
+{
+    rtx::remote remote;
+};
+
 struct subscribe
 {
     rtx::remote client;
